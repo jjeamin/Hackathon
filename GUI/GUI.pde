@@ -5,6 +5,7 @@ Serial port;
 String[] words;
 String var = " ";
 int card_number;
+int desk_count = 4;
 int mode = 0;
 ControlP5 cp5;
 PFont fontdesk;
@@ -27,8 +28,8 @@ void setup(){
    init();
    
    background(192, 192, 192);
-  
    fill(255, 255, 255);
+   
    textFont(fonttitle);
    text("SMART CAFE", 650, 50);
    
@@ -47,11 +48,15 @@ void draw(){
   if (var.indexOf("82 49 86 89") != -1 && card_number == 0) {
     mode = 1;
     card_number = 1;
+    desk_count = desk_count - 1;
   }
   if(var.indexOf("30 5B 59 A8") != -1 && card_number == 0) {
     mode = 1;
     card_number = 2;
+    desk_count = desk_count - 1;
   }
+  
+  
   
   if (mode == 0) {
     button_exit();
@@ -129,5 +134,6 @@ void exit() {
   mode = 0;
   card_number = 0;
   var = " ";
+  desk_count = 4;
   reset();
 }
