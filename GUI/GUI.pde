@@ -6,7 +6,6 @@ String[] words;
 String var = " ";
 int card_number;
 int mode = 0;
-int i;
 ControlP5 cp5;
 PFont fontdesk;
 PFont fonttitle;
