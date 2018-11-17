@@ -51,14 +51,13 @@ void loop() {
     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : " "));
     content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
-  Serial.println();
-
+ 
   //Serial.print("Message : ");
   content.toUpperCase();
 
   if(content.substring(1) == "82 49 86 89") {
     //Serial.println("Authorized access");
-    Serial.println();
+    //Serial.println();
     delay(1000);
   }
   else {
