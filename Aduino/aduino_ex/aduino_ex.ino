@@ -40,9 +40,7 @@ void loop() {
    }
 
    // Dump debug info about the card; PICC_HaltA() is automatically called
-   //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
-
-  //Serial.print("UID tag : ");
+  //mfrc522.PICC_DumpToSerial(&(mfrc522.uid));
   String content = "";
   
   for(byte i = 0; i < mfrc522.uid.size; i++) {
@@ -51,17 +49,15 @@ void loop() {
     content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : " "));
     content.concat(String(mfrc522.uid.uidByte[i], HEX));
   }
- 
+
   //Serial.print("Message : ");
   content.toUpperCase();
+  Serial.println();
 
   if(content.substring(1) == "82 49 86 89") {
-    //Serial.println("Authorized access");
-    //Serial.println();
     delay(1000);
   }
-  else {
-    Serial.println("error");
+  if(content.substring(1) == "30 5B 59 A8") {
     delay(1000);
   }
 }
