@@ -45,6 +45,8 @@ void draw(){
   print(var);
   delay(1000);
   
+  count();
+  
   if (var.indexOf("82 49 86 89") != -1 && card_number == 0) {
     mode = 1;
     card_number = 1;
@@ -56,8 +58,6 @@ void draw(){
     desk_count = desk_count - 1;
   }
   
-  
-  
   if (mode == 0) {
     button_exit();
   }
@@ -66,19 +66,19 @@ void draw(){
   }
 }
 
-void button_sit() {
+void button_sit() {//sit mode
   cp5.getController("Desk2")
     .setColorBackground(color(255,0,0))
     ;
 }
 
-void button_exit() {
+void button_exit() { //exit mode
   cp5.getController("Desk2")
     .setColorBackground(color(0,255,0))
     ;
 }
 
-void reset() {
+void reset() { //gui reset
   cp5.getController("Desk1")
     .setColorBackground(color(0,255,0))
     ;
@@ -93,7 +93,7 @@ void reset() {
     ;
 }
 
-void init() {
+void init() { //gui init
  cp5.addButton("Desk1")
     .setPosition(100, 80)
     .setSize(300, 200)
@@ -128,12 +128,26 @@ void init() {
     .setFont(fontdesk)
     .setColorBackground(color(0, 0, 0))
     ;
+    
+  cp5.addTextfield("count")
+    .setPosition(1300,300)
+    .setText("count : " + Integer.toString(desk_count))
+    .setSize(300,100)
+    .setColorBackground(color(0, 0, 0))
+    .setFont(fontdesk)
+    ;
 }
 
-void exit() {
+void exit() {//reset button
   mode = 0;
   card_number = 0;
   var = " ";
   desk_count = 4;
   reset();
+}
+
+void count() {
+  cp5.get(Textfield.class, "count")
+    .setText("count : " + Integer.toString(desk_count))
+    ;
 }
