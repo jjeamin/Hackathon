@@ -43,12 +43,6 @@ void draw(){
   }
   
   print(var);
-  /*words = var.split(" ");
-  for (i = 0; i<words.length; i++) {
-    println(words[i]);
-  }
-  */
-  
   delay(1000);
   
   if (var.indexOf("82 49 86 89") != -1 && card_number == 0) {
@@ -73,11 +67,28 @@ void button_sit() {
     .setColorBackground(color(255,0,0))
     ;
 }
+
 void button_exit() {
   cp5.getController("Desk2")
     .setColorBackground(color(0,255,0))
     ;
 }
+
+void reset() {
+  cp5.getController("Desk1")
+    .setColorBackground(color(0,255,0))
+    ;
+  cp5.getController("Desk2")
+    .setColorBackground(color(0,255,0))
+    ;
+  cp5.getController("Desk3")
+    .setColorBackground(color(0,255,0))
+    ;
+  cp5.getController("Desk4")
+    .setColorBackground(color(0,255,0))
+    ;
+}
+
 void init() {
  cp5.addButton("Desk1")
     .setPosition(100, 80)
@@ -107,4 +118,17 @@ void init() {
     .setColorBackground(color(0, 255, 0))
     .setColorActive(color(0, 0, 0))
    ;
+  cp5.addButton("exit")
+    .setPosition(1650, 150)
+    .setSize(100,100)
+    .setFont(fontdesk)
+    .setColorBackground(color(0, 0, 0))
+    ;
+}
+
+void exit() {
+  mode = 0;
+  card_number = 0;
+  var = " ";
+  reset();
 }
